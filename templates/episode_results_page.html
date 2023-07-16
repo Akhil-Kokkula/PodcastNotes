@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Podcast Episode Notes Generator</title>
+  </head>
+  <form method="post">
+    <input type="text" name="episode_name" placeholder="Episode Name">
+    <button type="submit">Submit</button>
+  </form>
+  <h1>Episode Results</h1>
+  <ul>
+    {% for episode in episode_results %}
+        <li>
+          {{ episode["title_original"] }}
+          <!-- {{ episode["thumbnail"] }}
+          {{ episode["audio"] }} -->
+        </li>
+        <button type="button" onclick="window.location.href=`{{ url_for('notes_page', episode_audio=episode['audio'], episode_id=episode['id']) }}`;">Get Notes</button>
+      {% endfor %}
+  </ul>
+</html>
